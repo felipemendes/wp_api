@@ -7,3 +7,5 @@ Get via git clone:
 ```
 $ git clone https://github.com/felipemendes/purai_wp_api.git && purai_wp_api
 ```
+
+## Usage with Docker
