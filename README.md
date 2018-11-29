@@ -9,7 +9,7 @@ Module in [WordPress REST API](https://developer.wordpress.org/rest-api/) with c
 List all events from WordPress dashboard
 
 ```json
-{
+   {
 	"my-awesome-concert": {
 		"id": 22,
 		"slug": "my-awesome-concert",
@@ -28,14 +28,14 @@ List all events from WordPress dashboard
 		"city": "Cupertino",
 		"date": "2019-02-12"
 	}
-}
+   }
 ```
 
 #### GET `http://localhost:8081/wp-json/purai/event/{slug}`
 List event by event slug
 
 ```json
-{
+   {
 	"id": 21,
 	"slug": "sample-event",
 	"title": 21,
@@ -43,7 +43,7 @@ List event by event slug
 	"address": "Apple Campus, Cupertino, CA 95014, EUA",
 	"city": "Cupertino",
 	"date": "2019-02-12"
-}
+   }
 ```
 ## Installing manually
 
@@ -89,3 +89,5 @@ $ docker-compose rm
 ```
 $ docker-compose ps
 ```
+
+Made with :heart: by [Felipe Mendes](https://github.com/felipemendes).
