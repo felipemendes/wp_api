@@ -26,7 +26,7 @@ function create_post_events() {
         'supports' => $supports,
         'show_ui' => true,
 	);
-	register_post_type( 'event', $args);	
+	register_post_type( 'events', $args);	
 }
 add_action('init', 'create_post_events');
 

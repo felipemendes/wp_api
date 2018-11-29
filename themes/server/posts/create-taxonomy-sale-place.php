@@ -18,6 +18,6 @@ function create_taxonomy_sale_place() {
 		'public' => true,
 		'hierarchical' => true
     );
-	register_taxonomy('sale_place', 'event', $args);
+	register_taxonomy('sale_place', 'events', $args);
 }
 add_action( 'init' , 'create_taxonomy_sale_place' );

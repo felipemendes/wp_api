@@ -18,6 +18,6 @@ function create_taxonomy_category() {
 		'public' => true,
 		'hierarchical' => true
     );
-	register_taxonomy('category', 'event', $args);
+	register_taxonomy('category', 'events', $args);
 }
 add_action( 'init' , 'create_taxonomy_category' );

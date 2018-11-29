@@ -5,7 +5,7 @@ function add_meta_info() {
 		'meta_info',
 		'Extra Info',
 		'meta_info_view',
-		'event',
+		'events',
 		'normal',
 		'high'
 	);
