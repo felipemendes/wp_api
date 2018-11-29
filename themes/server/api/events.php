@@ -20,6 +20,7 @@ function api_get_events() {
 
         $post = array (
             'id' => $id,
+            'slug' => $slug,
             'title' => $title,
             'image' => $image,
             'address' => $address,
