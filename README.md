@@ -73,6 +73,8 @@ The above command will run docker-compose in the foreground. If you would rather
 $ docker-compose up -d
 ```
 
+And the application will start at `http://localhost:8081`.
+
 ### Docker util commands
 
 #### Stopping the Environment

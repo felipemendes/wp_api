@@ -1,8 +1,8 @@
 <?php
 
-function create_taxonomy_category() {
-    $singular = 'Category';
-    $plural = 'Categories';
+function create_taxonomy_where_to_buy() {
+    $singular = 'Where to Buy';
+    $plural = 'Where to Buy';
     
 	$labels = array (
 		'name' 			=> $plural,
@@ -18,6 +18,6 @@ function create_taxonomy_category() {
 		'public' 		=> true,
 		'hierarchical' 	=> true
     );
-	register_taxonomy('category', 'events', $args);
+	register_taxonomy('where_to_buy', 'events', $args);
 }
-add_action( 'init' , 'create_taxonomy_category' );
+add_action( 'init' , 'create_taxonomy_where_to_buy' );
