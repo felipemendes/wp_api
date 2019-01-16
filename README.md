@@ -1,50 +1,107 @@
 # WordPress PurAí REST API
-Module in [WordPress REST API](https://developer.wordpress.org/rest-api/) with custom `wp-json` for [Post Types](https://codex.wordpress.org/Post_Types). Includes WP theme and docker that provides a development environment.
+Module in [WordPress REST API](https://developer.wordpress.org/rest-api/) with custom wp-json and [Post Types](https://codex.wordpress.org/Post_Types). Includes WP theme and docker that provides a develop environment.
 
 ![WordPress](/screenshots/wordpress.png "WordPress")
 
-## User Endpoints
+## Documentation
+Used [Restsplain](https://github.com/humanmade/Restsplain) to document and test.
+```
+http://localhost:8081/api-docs/
+```
 
-#### GET `http://localhost:8081/wp-json/purai/events`
+## Getting a Token
+
+Send a `POST` request to `http://localhost:8081/jwt-auth/v1/token`. 
+
+#### Curl request example
+```
+curl -XGET http://localhost:8081/jwt-auth/v1/token
+```
+
+## Event Endpoints
+
+#### GET `http://localhost:8081/wp-json/purai/v1/events`
 List all events from WordPress dashboard
 
 ```json
-   {
-	"my-awesome-concert": {
-		"id": 22,
-		"slug": "my-awesome-concert",
-		"title": "My Awesome Concert",
-		"image": "http://localhost:8081/wp-content/uploads/2018/11/photo.jpg",
-		"address": "Rua X, 123",
-		"city": "Divinópolis",
-		"date": "2020-01-01"
-	},
-	"sample-event": {
-		"id": 21,
-		"slug": "sample-event",
-		"title": "Sample Event",
-		"image": "http://localhost:8081/wp-content/uploads/2018/11/photo.jpg",
-		"address": "Apple Campus, Cupertino, CA 95014, EUA",
-		"city": "Cupertino",
-		"date": "2019-02-12"
-	}
-   }
+[
+  {
+    "id": 5,
+    "guid": "http://localhost:8081/?post_type=events&#038;p=5",
+    "slug": "sample-event",
+    "status": "publish",
+    "featured": "0",
+    "created_at": "2019-01-14 20:31:28",
+    "updated_at": "2019-01-15 23:30:00",
+    "title": "Sample Event",
+    "image": "http://localhost:8081/wp-content/uploads/2019/01/download.jpeg",
+    "about": "Sample event description",
+    "price": "R$ 100,00",
+    "date": "2022-01-01T00:00:00",
+    "contact": "Mais informações pelo telefone (55) 2222-3332",
+    "address": "Apple Campus, Cupertino, CA 95014, EUA",
+    "city": "Cupertino",
+    "category": {
+      "title": "Festa e Show"
+    },
+    "where_to_buy": {
+      "title": "Entre em contato para mais detalhes"
+    }
+  }
+]
 ```
 
-#### GET `http://localhost:8081/wp-json/purai/event/{slug}`
+#### GET `http://localhost:8081/wp-json/purai/v1/event/{slug}`
 List event by event slug
 
 ```json
-   {
-	"id": 21,
-	"slug": "sample-event",
-	"title": 21,
-	"image": "http://localhost:8081/wp-content/uploads/2018/11/photo.jpg",
-	"address": "Apple Campus, Cupertino, CA 95014, EUA",
-	"city": "Cupertino",
-	"date": "2019-02-12"
-   }
+{
+  "id": 5,
+  "guid": "http://localhost:8081/?post_type=events&#038;p=5",
+  "slug": "sample-event",
+  "status": "publish",
+  "featured": "0",
+  "created_at": "2019-01-14 20:31:28",
+  "updated_at": "2019-01-15 23:30:00",
+  "title": "Sample Event",
+  "image": "http://localhost:8081/wp-content/uploads/2019/01/download.jpeg",
+  "about": "Sample event description",
+  "price": "R$ 100,00",
+  "date": "2022-01-01T00:00:00",
+  "contact": "Mais informações pelo telefone (55) 2222-3332",
+  "address": "Apple Campus, Cupertino, CA 95014, EUA",
+  "city": "Cupertino",
+  "category": {
+    "title": "Festa e Show"
+  },
+  "where_to_buy": {
+    "title": "Entre em contato para mais detalhes"
+  }
+}
 ```
+
+## Category Endpoints
+
+#### GET `http://localhost:8081/wp-json/purai/v1/categories`
+List all categories from WordPress dashboard
+
+```json
+[
+  {
+    "id": 4,
+    "title": "Curso e Workshop",
+    "description": "",
+    "count": 1
+  },
+  {
+    "id": 10,
+    "title": "Festa e Show",
+    "description": "",
+    "count": 1
+  }
+]
+```
+
 ## Installing manually
 
 Clone this repo:
@@ -91,5 +148,8 @@ $ docker-compose rm
 ```
 $ docker-compose ps
 ```
+
+## License
+This project is licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details
 
 Made with :heart: by [Felipe Mendes](https://github.com/felipemendes).
