@@ -1,6 +1,8 @@
 <?php
 
-function api_get_events() {
+function api_get_events_by_category( $request ) {
+    $param = sanitize_text_field( $request->get_param('category') );
+
     $result = array();
     $args = array(
         'post_type' => 'events',
@@ -8,6 +10,13 @@ function api_get_events() {
         'status' => 'publish',
         'limit' => -1,
         'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'category',
+                'field'    => 'slug',
+                'terms'    => $param,
+            ),
+        ),
     );
 
     $loop = new WP_Query( $args );
@@ -33,12 +42,10 @@ function api_get_events() {
         $where_to_buy = get_the_terms( $post->ID, 'where_to_buy' )[0];
         
         $taxonomy_category = array(
-            'slug' => $category->slug,
             'title' => $category->name,
         );
 
         $taxonomy_where_to_buy = array(
-            'slug' => $where_to_buy->slug,
             'title' => $where_to_buy->name,
         );
 
@@ -68,10 +75,10 @@ function api_get_events() {
     return rest_ensure_response( $result );
 }
 
-function api_register_events_routes() {
-    register_rest_route('purai/v1', '/events', array(
+function api_register_events_by_category_routes() {
+    register_rest_route('purai/v1', '/events/(?P<category>[-\w]+)', array(
         'methods' => 'GET',
-        'callback' => 'api_get_events',
+        'callback' => 'api_get_events_by_category',
     ));
 }
-add_action('rest_api_init', 'api_register_events_routes');
+add_action('rest_api_init', 'api_register_events_by_category_routes');

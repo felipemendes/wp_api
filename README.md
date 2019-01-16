@@ -42,14 +42,19 @@ List all events from WordPress dashboard
     "address": "Apple Campus, Cupertino, CA 95014, EUA",
     "city": "Cupertino",
     "category": {
+      "slug": "festa-e-show",
       "title": "Festa e Show"
     },
     "where_to_buy": {
+      "slug": "entre-em-contato-para-mais-detalhes",
       "title": "Entre em contato para mais detalhes"
     }
   }
 ]
 ```
+
+#### GET `http://localhost:8081/wp-json/purai/v1/events/{category-slug}`
+List all events from a category
 
 #### GET `http://localhost:8081/wp-json/purai/v1/event/{slug}`
 List event by event slug
@@ -72,9 +77,11 @@ List event by event slug
   "address": "Apple Campus, Cupertino, CA 95014, EUA",
   "city": "Cupertino",
   "category": {
+    "slug": "festa-e-show",
     "title": "Festa e Show"
   },
   "where_to_buy": {
+    "slug": "entre-em-contato-para-mais-detalhes",
     "title": "Entre em contato para mais detalhes"
   }
 }
@@ -83,21 +90,23 @@ List event by event slug
 ## Category Endpoints
 
 #### GET `http://localhost:8081/wp-json/purai/v1/categories`
-List all categories from WordPress dashboard
+List all categories
 
 ```json
 [
   {
     "id": 4,
+    "slug": "curso-e-workshop",
     "title": "Curso e Workshop",
-    "description": "",
+    "description": "Sample text",
     "count": 1
   },
   {
     "id": 10,
+    "slug": "festa-e-show",
     "title": "Festa e Show",
-    "description": "",
-    "count": 1
+    "description": "Sample text",
+    "count": 2
   }
 ]
 ```

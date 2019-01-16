@@ -20,12 +20,14 @@ function api_get_event( $request ) {
     $city = get_post_meta( $page_object->ID, 'city', TRUE );
     $category = get_the_terms( $id, 'category' )[0];
     $where_to_buy = get_the_terms( $id, 'where_to_buy' )[0];
-
+        
     $taxonomy_category = array(
+        'slug' => $category->slug,
         'title' => $category->name,
     );
 
     $taxonomy_where_to_buy = array(
+        'slug' => $where_to_buy->slug,
         'title' => $where_to_buy->name,
     );
     

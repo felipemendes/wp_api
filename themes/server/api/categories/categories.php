@@ -7,6 +7,7 @@ function api_get_categories() {
     foreach( $categories as $category ) {
         $item = array(
             'id' => $category->cat_ID,
+            'slug' => $category->slug,
             'title' => $category->name,
             'description' => $category->description,
             'count' => $category->count
