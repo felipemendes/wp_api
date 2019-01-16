@@ -18,6 +18,12 @@ Send a `POST` request to `http://localhost:8081/jwt-auth/v1/token`.
 curl -XGET http://localhost:8081/jwt-auth/v1/token
 ```
 
+## GraphQL Endpoint
+
+Used [wp-graphql](https://github.com/wp-graphql/wp-graphql) plugin that provide a GraphQL endpoint at `http://localhost:8081/graphql`. The plugin must be installed and pretty permalinks enabled.
+
+![GraphQL](/screenshots/graphql.png "GraphQL")
+
 ## Event Endpoints
 
 #### GET `http://localhost:8081/wp-json/purai/v1/events`

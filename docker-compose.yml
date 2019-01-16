@@ -8,6 +8,7 @@ web:
      - "8081:80"
     volumes:
      - ~/Projects/PurAi/purai_wp_api/themes/server:/var/www/html/wp-content/themes/server
+     - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
 mysql:
     image: mysql:5.7

@@ -20,11 +20,14 @@ function create_post_events() {
     );
     
 	$args = array(
-		'labels' 		=> $labels,
-		'description' 	=> $description,
-		'public' 		=> true,
-        'supports' 		=> $supports,
-        'show_ui' 		=> true,
+		'labels' => $labels,
+		'description' => $description,
+		'public' => true,
+        'supports' => $supports,
+		'show_ui' => true,
+		'show_in_graphql' => true,
+		'graphql_single_name' => 'event',
+		'graphql_plural_name' => 'events',
 	);
 	register_post_type( 'events', $args );	
 }

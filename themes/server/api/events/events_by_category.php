@@ -42,10 +42,12 @@ function api_get_events_by_category( $request ) {
         $where_to_buy = get_the_terms( $post->ID, 'where_to_buy' )[0];
         
         $taxonomy_category = array(
+            'slug' => $category->slug,
             'title' => $category->name,
         );
 
         $taxonomy_where_to_buy = array(
+            'slug' => $where_to_buy->slug,
             'title' => $where_to_buy->name,
         );
 
