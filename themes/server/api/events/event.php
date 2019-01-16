@@ -1,8 +1,8 @@
 <?php
 
-function api_get_event($request) {
-    $slug = sanitize_text_field($request->get_param('slug'));
-    $page_object = get_page_by_path($slug, OBJECT, 'events');
+function api_get_event( $request ) {
+    $slug = sanitize_text_field( $request->get_param('slug') );
+    $page_object = get_page_by_path( $slug, OBJECT, 'events' );
 
     $id = $page_object->ID;
     $guid = $page_object->guid;
@@ -21,11 +21,11 @@ function api_get_event($request) {
     $category = get_the_terms( $id, 'category' )[0];
     $where_to_buy = get_the_terms( $id, 'where_to_buy' )[0];
 
-    $taxonomy_category = array (
+    $taxonomy_category = array(
         'title' => $category->name,
     );
 
-    $taxonomy_where_to_buy = array (
+    $taxonomy_where_to_buy = array(
         'title' => $where_to_buy->name,
     );
     
@@ -58,4 +58,4 @@ function api_register_event_routes() {
         'callback' => 'api_get_event',
     ));
 }
-add_action('rest_api_init', 'api_register_event_routes');
+add_action( 'rest_api_init', 'api_register_event_routes' );

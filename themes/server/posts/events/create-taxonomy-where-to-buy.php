@@ -1,10 +1,10 @@
 <?php
 
-function create_taxonomy_category() {
-    $singular = 'Category';
-    $plural = 'Categories';
+function create_taxonomy_where_to_buy() {
+    $singular = 'Where to Buy';
+    $plural = 'Where to Buy';
     
-	$labels = array (
+	$labels = array(
 		'name' 			=> $plural,
 		'singular_name' => $singular,
 		'view_item' 	=> 'View ' . $singular,
@@ -13,11 +13,11 @@ function create_taxonomy_category() {
 		'add_new_item' 	=> 'Add New ' . $singular
     );
         
-	$args = array (
+	$args = array(
 		'labels' 		=> $labels,
 		'public' 		=> true,
 		'hierarchical' 	=> true
     );
-	register_taxonomy('category', 'events', $args);
+	register_taxonomy( 'where_to_buy', 'events', $args );
 }
-add_action( 'init' , 'create_taxonomy_category' );
+add_action( 'init' , 'create_taxonomy_where_to_buy' );

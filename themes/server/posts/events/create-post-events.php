@@ -1,12 +1,11 @@
 <?php
 
-
 function create_post_events() {
 	$singular = 'Event';
     $plural = 'Events';
     $description = 'List all events';
     
-	$labels = array (
+	$labels = array(
 		'name' 			=> $plural,
 		'singular_name' => $singular,
 		'view_item' 	=> 'View ' . $singular,
@@ -15,23 +14,23 @@ function create_post_events() {
 		'add_new_item' 	=> 'Add New ' . $singular
     );
     
-	$supports = array (
+	$supports = array(
 		'title',
 		'thumbnail'
     );
     
-	$args = array (
+	$args = array(
 		'labels' 		=> $labels,
 		'description' 	=> $description,
 		'public' 		=> true,
         'supports' 		=> $supports,
         'show_ui' 		=> true,
 	);
-	register_post_type( 'events', $args);	
+	register_post_type( 'events', $args );	
 }
-add_action('init', 'create_post_events');
+add_action( 'init', 'create_post_events' );
 
-require_once TEMPLATEPATH . '/posts/create-taxonomy-category.php';
-require_once TEMPLATEPATH . '/posts/create-taxonomy-where-to-buy.php';
-require_once TEMPLATEPATH . '/posts/create-meta-box-about.php';
-require_once TEMPLATEPATH . '/posts/create-meta-box-info.php';
+require_once TEMPLATEPATH . '/posts/events/create-taxonomy-categories.php';
+require_once TEMPLATEPATH . '/posts/events/create-taxonomy-where-to-buy.php';
+require_once TEMPLATEPATH . '/posts/events/create-meta-box-about.php';
+require_once TEMPLATEPATH . '/posts/events/create-meta-box-info.php';

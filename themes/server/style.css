@@ -1,3 +1,38 @@
 /*
 Theme Name: Server PurAí
 */
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.restsplain-header a {
+    font-weight: 100;
+    color: #626262;
+}
+
+.restsplain-response-base {
+    display: none !important;
+}
+
+.restsplain-response h1 {
+    color: #f2f2f2;
+}
+
+.restsplain-response-input {
+    padding: 14px 10px !important;
+    font-size: 1.1em !important;
+}
+
+nav button {
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: 600;
+}

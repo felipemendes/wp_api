@@ -10,7 +10,7 @@ function add_meta_about() {
 		'high'
 	);
 }
-add_action('add_meta_boxes', 'add_meta_about');
+add_action( 'add_meta_boxes', 'add_meta_about' );
 
 function meta_about_view( $post ) {
 	$meta_data = get_post_meta( $post->ID ); ?>
@@ -24,8 +24,8 @@ function meta_about_view( $post ) {
 }
 
 function save_meta_box_about( $post_id ) {
-	if( isset($_POST['about']) ) {
+	if( isset( $_POST['about'] ) ) {
 		update_post_meta( $post_id, 'about', sanitize_text_field( $_POST['about'] ) );
 	}
 }
-add_action('save_post', 'save_meta_box_about');
+add_action( 'save_post', 'save_meta_box_about' );

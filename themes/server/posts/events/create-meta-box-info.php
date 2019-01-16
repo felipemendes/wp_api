@@ -10,7 +10,7 @@ function add_meta_info() {
 		'high'
 	);
 }
-add_action('add_meta_boxes', 'add_meta_info');
+add_action( 'add_meta_boxes', 'add_meta_info' );
 
 function meta_info_view( $post ) {
 	$meta_data = get_post_meta( $post->ID ); 
@@ -113,4 +113,4 @@ function save_meta_box( $post_id ) {
 		update_post_meta( $post_id, 'city', sanitize_text_field( $_POST['city'] ) );
 	}
 }
-add_action('save_post', 'save_meta_box');
+add_action( 'save_post', 'save_meta_box' );

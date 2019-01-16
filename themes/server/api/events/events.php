@@ -1,7 +1,7 @@
 <?php
 
 function api_get_events() {
-    $posts = array();
+    $result = array();
     $args = array(
         'post_type' => 'events',
         'orderby' => 'date',
@@ -10,17 +10,17 @@ function api_get_events() {
         'posts_per_page' => -1,
     );
 
-    $loop = new WP_Query($args);
+    $loop = new WP_Query( $args );
     
-    while ($loop->have_posts()) : $loop->the_post();
+    while ( $loop->have_posts() ) : $loop->the_post();
     
         $id = get_the_ID();
         $guid = get_the_guid();
-        $slug = get_post_field('post_name', $id);
+        $slug = get_post_field( 'post_name', $id );
         $status = get_post_status();
         $featured = get_post_meta( get_the_ID(), 'featured', true );
-        $created_at = get_the_date('Y-m-d H:i:s');
-        $updated_at = get_the_modified_date('Y-m-d H:i:s');
+        $created_at = get_the_date( 'Y-m-d H:i:s' );
+        $updated_at = get_the_modified_date( 'Y-m-d H:i:s' );
         $title = get_the_title();
         $image = get_the_post_thumbnail_url( $post_id, 'full' );
         $about = get_post_meta( get_the_ID(), 'about', TRUE );
@@ -32,15 +32,15 @@ function api_get_events() {
         $category = get_the_terms( $post->ID, 'category' )[0];
         $where_to_buy = get_the_terms( $post->ID, 'where_to_buy' )[0];
         
-        $taxonomy_category = array (
+        $taxonomy_category = array(
             'title' => $category->name,
         );
 
-        $taxonomy_where_to_buy = array (
+        $taxonomy_where_to_buy = array(
             'title' => $where_to_buy->name,
         );
 
-        $post = array (
+        $post = array(
             'id' => $id,
             'guid' => $guid,
             'slug' => $slug,
@@ -60,10 +60,10 @@ function api_get_events() {
             'where_to_buy' => $taxonomy_where_to_buy,
         );
 
-        $posts[] = $post;
+        $result[] = $post;
     endwhile;
 
-    return rest_ensure_response( $posts );
+    return rest_ensure_response( $result );
 }
 
 function api_register_events_routes() {
