@@ -21,7 +21,7 @@ function create_post_events() {
     
 	$args = array(
 		'labels' => $labels,
-		'description' => $description,
+		'about' => $description,
 		'public' => true,
         'supports' => $supports,
 		'show_ui' => true,

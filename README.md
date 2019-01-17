@@ -20,7 +20,7 @@ curl -XGET http://localhost:8081/jwt-auth/v1/token
 
 ## GraphQL Endpoint
 
-Used [wp-graphql](https://github.com/wp-graphql/wp-graphql) plugin that provide a GraphQL endpoint at `http://localhost:8081/graphql`. The plugin must be installed and pretty permalinks enabled.
+Use [wp-graphql](https://github.com/wp-graphql/wp-graphql) plugin that provide a GraphQL endpoint at `http://localhost:8081/graphql`. The plugin must be installed and pretty permalinks enabled.
 
 ![GraphQL](/screenshots/graphql.png "GraphQL")
 
@@ -104,14 +104,14 @@ List all categories
     "id": 4,
     "slug": "curso-e-workshop",
     "title": "Curso e Workshop",
-    "description": "Sample text",
+    "about": "Sample text",
     "count": 1
   },
   {
     "id": 10,
     "slug": "festa-e-show",
     "title": "Festa e Show",
-    "description": "Sample text",
+    "about": "Sample text",
     "count": 2
   }
 ]

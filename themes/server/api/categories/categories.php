@@ -9,7 +9,7 @@ function api_get_categories() {
             'id' => $category->cat_ID,
             'slug' => $category->slug,
             'title' => $category->name,
-            'description' => $category->description,
+            'about' => $category->description,
             'count' => $category->count
         );
         $result[] = $item;
