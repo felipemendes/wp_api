@@ -8,7 +8,6 @@ add_filter( 'restsplain_docs_base', function() {
 
 require_once TEMPLATEPATH . '/posts/events/create-post-events.php';
 require_once TEMPLATEPATH . '/api/events/events.php';
-require_once TEMPLATEPATH . '/api/events/events_by_category.php';
 require_once TEMPLATEPATH . '/api/events/event.php';
 
 require_once TEMPLATEPATH . '/api/categories/categories.php';
