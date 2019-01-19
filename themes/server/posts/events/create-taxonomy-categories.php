@@ -14,9 +14,10 @@ function create_taxonomy_category() {
     );
         
 	$args = array(
-		'labels' 		=> $labels,
-		'public' 		=> true,
-		'hierarchical' 	=> true
+		'labels' 			=> $labels,
+		'public' 			=> true,
+		'hierarchical' 		=> true,
+		'show_admin_column' => true
     );
 	register_taxonomy( 'category', 'events', $args );
 }

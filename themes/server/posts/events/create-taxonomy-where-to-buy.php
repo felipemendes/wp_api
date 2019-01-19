@@ -14,9 +14,10 @@ function create_taxonomy_where_to_buy() {
     );
         
 	$args = array(
-		'labels' 		=> $labels,
-		'public' 		=> true,
-		'hierarchical' 	=> true
+		'labels' 			=> $labels,
+		'public' 			=> true,
+		'hierarchical' 		=> true,
+		'show_admin_column' => true
     );
 	register_taxonomy( 'where_to_buy', 'events', $args );
 }
