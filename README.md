@@ -29,27 +29,34 @@ Use [wp-graphql](https://github.com/wp-graphql/wp-graphql) plugin that provide a
 #### GET `http://localhost:8081/wp-json/purai/v1/events`
 List all events from WordPress dashboard
 
+| Parameter | Type | Required | Description
+| --------- | ---- | -------- | ----------- |
+| `slug` | string | :x: | GET filtered by slug |
+| `per-page` | int | :x: | GET filtered by limit informed. If not informed returns all records |
+| `category` | string | :x: | GET filtered by category slug |
+| `today` | int | :x: | GET filtered events by current date |
+
+#### Event data response example
 ```json
 [
   {
     "id": 5,
     "guid": "http://localhost:8081/?post_type=events&#038;p=5",
     "slug": "sample-event",
-    "status": "publish",
+    "status": "future",
     "featured": "0",
-    "created_at": "2019-01-14 20:31:28",
-    "updated_at": "2019-01-15 23:30:00",
     "title": "Sample Event",
     "image": "http://localhost:8081/wp-content/uploads/2019/01/download.jpeg",
     "about": "Sample event description",
     "price": "R$ 100,00",
-    "date": "2022-01-01T00:00:00",
+    "date_raw": "2019-01-19 20:00:28",
+    "date": "19/04/2019 às 20:00",
     "contact": "Mais informações pelo telefone (55) 2222-3332",
     "address": "Apple Campus, Cupertino, CA 95014, EUA",
     "city": "Cupertino",
     "category": {
-      "slug": "festa-e-show",
-      "title": "Festa e Show"
+      "slug": "festas",
+      "title": "Festas"
     },
     "where_to_buy": {
       "slug": "entre-em-contato-para-mais-detalhes",
@@ -58,9 +65,6 @@ List all events from WordPress dashboard
   }
 ]
 ```
-
-#### GET `http://localhost:8081/wp-json/purai/v1/events/{category-slug}`
-List all events from a category
 
 #### GET `http://localhost:8081/wp-json/purai/v1/event/{slug}`
 List event by event slug
