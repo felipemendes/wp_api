@@ -36,6 +36,8 @@ List all events from WordPress dashboard
 | `category` | string | :x: | GET filtered by category slug |
 | `today` | int | :x: | GET filtered events by current date |
 | `city` | string | :x: | GET filtered by city slug |
+| `featured` | int | :x: | GET filtered by featured events. (1: Yes, 0: No) |
+| `trending` | int | :x: | GET filtered by trending events. (1: Yes, 0: No) |
 
 #### Event data response example
 ```json
