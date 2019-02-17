@@ -1,13 +1,13 @@
 <?php
 
 function api_get_events( $data ) {
+
     $slug_param = $data->get_param( 'slug' );
     $per_page_param = $data->get_param( 'per-page' );
+    
     $category_param = $data->get_param( 'category' );
-    $today_param = $data->get_param( 'today' );
-
     if(!empty($category_param) || isset($category_param) ) {
-		$taxArray = array(
+		$taxArrayCategory = array(
             array(
                 'taxonomy' => 'category',
                 'field'    => 'slug',
@@ -16,6 +16,7 @@ function api_get_events( $data ) {
         );
     };
 
+    $today_param = $data->get_param( 'today' );
     if(!empty($today_param) || isset($today_param) ) {
         $today = getdate();
 		$dateQuery = array(
@@ -27,16 +28,29 @@ function api_get_events( $data ) {
         );
     };
 
+    $featured_param = $data->get_param( 'featured' );
+    if(!empty($featured_param) || isset($featured_param) ) {
+        $meta_query = array(
+            'meta_query' => array(
+                array(
+                    'key'     => 'featured',
+                    'value'   => $featured_param
+                ),
+            ),
+        );
+    }
+    
     $result = array();
     $args = array(
         'post_type'         => 'events',
         'orderby'           => 'date',
-        'post_status'       => array('publish', 'future',),
+        'post_status'       => array('publish', 'future'),
         'limit'             => -1,
-        'posts_per_page'    => $per_page_param,
-        'tax_query'         => $taxArray,
-        'name'              => $slug_param,
+        'tax_query'         => $taxArrayCategory,
         'date_query'        => $dateQuery,
+        'name'              => $slug_param,
+        'posts_per_page'    => $per_page_param,
+        'meta_query'        => $meta_query
     );
     
     $loop = new WP_Query( $args );
