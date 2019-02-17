@@ -14,7 +14,9 @@ add_action( 'add_meta_boxes', 'add_meta_info' );
 
 function meta_info_view( $post ) {
 	$meta_data = get_post_meta( $post->ID ); 
-	$featured = ( isset( $meta_data['featured'][0] ) && '1' === $meta_data['featured'][0] ) ? 1 : 0; ?>
+	$featured = ( isset( $meta_data['featured'][0] ) && '1' === $meta_data['featured'][0] ) ? 1 : 0;
+	$trending = ( isset( $meta_data['trending'][0] ) && '1' === $meta_data['trending'][0] ) ? 1 : 0; 
+	?>
 
 	<style>
 		.meta-box {	
@@ -60,27 +62,19 @@ function meta_info_view( $post ) {
 	
 	<div class="meta-box">
 		<div class="meta-box-item">
-			<label>
-				<input type="checkbox" name="featured" value="1" <?php checked( $featured, 1 ); ?> /> Featured
-			</label>
-		</div>
+			<label><input type="checkbox" name="featured" value="1" <?php checked( $featured, 1 ); ?> /> Featured</label>
 
-		<div class="meta-box-item">
+			<label><input type="checkbox" name="trending" value="1" <?php checked( $trending, 1 ); ?> /> Trending</label>
+
 			<label>Price</label>
 			<input class="meta-box-input" type="text" name="price" value="<?= $meta_data['price'][0]; ?>">
-		</div>
 
-		<div class="meta-box-item">
 			<label>Date</label>
 			<input class="meta-box-input" type="text" name="date" value="<?= $meta_data['date'][0]; ?>">
-		</div>
 
-		<div class="meta-box-item">
 			<label>Contact</label>
 			<input class="meta-box-input" type="text" name="contact" value="<?= $meta_data['contact'][0]; ?>">
-		</div>
 
-		<div class="meta-box-item">
 			<label>Address</label>
 			<input class="meta-box-input" type="text" name="address" value="<?= $meta_data['address'][0]; ?>">
 		</div>
@@ -89,8 +83,11 @@ function meta_info_view( $post ) {
 }
 
 function save_meta_box( $post_id ) {
-	$featured = ( isset( $_POST['featured'] ) && '1' === $_POST['featured'] ) ? 1 : 0; // Input var okay.
+	$featured = ( isset( $_POST['featured'] ) && '1' === $_POST['featured'] ) ? 1 : 0;
 		update_post_meta( $post_id, 'featured', esc_attr( $featured ) );
+
+	$trending = ( isset( $_POST['trending'] ) && '1' === $_POST['trending'] ) ? 1 : 0;
+		update_post_meta( $post_id, 'trending', esc_attr( $trending ) );
 
 	if ( isset($_POST['price']) ) {
 		update_post_meta( $post_id, 'price', sanitize_text_field( $_POST['price'] ) );

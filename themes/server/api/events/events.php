@@ -2,10 +2,13 @@
 
 function api_get_events( $data ) {
 
+    $category_param = $data->get_param( 'category' );
+    $today_param = $data->get_param( 'today' );
+    $featured_param = $data->get_param( 'featured' );
+    $trending_param = $data->get_param( 'trending' );
     $slug_param = $data->get_param( 'slug' );
     $per_page_param = $data->get_param( 'per-page' );
     
-    $category_param = $data->get_param( 'category' );
     if(!empty($category_param) || isset($category_param) ) {
 		$taxArrayCategory = array(
             array(
@@ -16,7 +19,6 @@ function api_get_events( $data ) {
         );
     };
 
-    $today_param = $data->get_param( 'today' );
     if(!empty($today_param) || isset($today_param) ) {
         $today = getdate();
 		$dateQuery = array(
@@ -28,14 +30,18 @@ function api_get_events( $data ) {
         );
     };
 
-    $featured_param = $data->get_param( 'featured' );
-    if(!empty($featured_param) || isset($featured_param) ) {
+    if( (!empty($featured_param) || isset($featured_param)) || (!empty($trending_param) || isset($trending_param)) ) {
         $meta_query = array(
             'meta_query' => array(
+                'relation' => 'OR',
                 array(
                     'key'     => 'featured',
                     'value'   => $featured_param
                 ),
+                array(
+                    'key'     => 'trending',
+                    'value'   => $trending_param
+                )
             ),
         );
     }
@@ -61,7 +67,8 @@ function api_get_events( $data ) {
         $guid = get_the_guid();
         $slug = get_post_field( 'post_name', $id );
         $status = get_post_status();
-        $featured = get_post_meta( get_the_ID(), 'featured', true );
+        $featured = get_post_meta( get_the_ID(), 'featured', TRUE );
+        $trending = get_post_meta( get_the_ID(), 'trending', TRUE );
         $created_at = get_the_date( 'Y-m-d H:i:s' );
         $title = get_the_title();
         $image = get_the_post_thumbnail_url( $post_id, 'full' );
@@ -90,6 +97,7 @@ function api_get_events( $data ) {
             'slug'          => $slug,
             'status'        => $status,
             'featured'      => $featured,
+            'trending'      => $trending,
             'title'         => $title,
             'image'         => $image,
             'about'         => $about,

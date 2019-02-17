@@ -1,8 +1,8 @@
 <?php
 
 function create_taxonomy_category() {
-    $singular = 'Category';
-    $plural = 'Categories';
+	$singular = 'Category';
+	$plural = 'Categories';
     
 	$labels = array(
 		'name' 			=> $plural,
@@ -18,7 +18,7 @@ function create_taxonomy_category() {
 		'public' 			=> true,
 		'hierarchical' 		=> true,
 		'show_admin_column' => true
-    );
+    );   
 	register_taxonomy( 'category', 'events', $args );
 }
 add_action( 'init' , 'create_taxonomy_category' );
