@@ -56,7 +56,7 @@ function api_get_events( $data ) {
         $date = get_post_meta( get_the_ID(), 'date', TRUE );
         $contact = get_post_meta( get_the_ID(), 'contact', TRUE );
         $address = get_post_meta( get_the_ID(), 'address', TRUE );
-        $city = get_post_meta( get_the_ID(), 'city', TRUE );
+        $city = get_the_terms( $post->ID, 'city' )[0];
         $category = get_the_terms( $post->ID, 'category' )[0];
         $where_to_buy = get_the_terms( $post->ID, 'where_to_buy' )[0];
         
@@ -84,7 +84,7 @@ function api_get_events( $data ) {
             'date'          => $date,
             'contact'       => $contact,
             'address'       => $address,
-            'city'          => $city,
+            'city'          => $city->name,
             'category'      => $taxonomy_category,
             'where_to_buy'  => $taxonomy_where_to_buy,
         );

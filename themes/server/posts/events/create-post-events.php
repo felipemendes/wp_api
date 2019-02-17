@@ -33,6 +33,7 @@ function create_post_events() {
 }
 add_action( 'init', 'create_post_events' );
 
+require_once TEMPLATEPATH . '/posts/events/create-taxonomy-cities.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-categories.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-where-to-buy.php';
 require_once TEMPLATEPATH . '/posts/events/create-meta-box-about.php';

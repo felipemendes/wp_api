@@ -35,6 +35,7 @@ List all events from WordPress dashboard
 | `per-page` | int | :x: | GET filtered by limit informed. If not informed returns all records |
 | `category` | string | :x: | GET filtered by category slug |
 | `today` | int | :x: | GET filtered events by current date |
+| `city` | string | :x: | GET filtered by city slug |
 
 #### Event data response example
 ```json

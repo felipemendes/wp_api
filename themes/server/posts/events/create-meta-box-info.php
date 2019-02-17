@@ -84,11 +84,6 @@ function meta_info_view( $post ) {
 			<label>Address</label>
 			<input class="meta-box-input" type="text" name="address" value="<?= $meta_data['address'][0]; ?>">
 		</div>
-
-		<div class="meta-box-item">
-			<label>City</label>
-			<input class="meta-box-input" type="text" name="city" value="<?= $meta_data['city'][0]; ?>">
-		</div>
 	</div>
 <?php
 }
@@ -108,9 +103,6 @@ function save_meta_box( $post_id ) {
 	}
 	if ( isset($_POST['address']) ) {
 		update_post_meta( $post_id, 'address', sanitize_text_field( $_POST['address'] ) );
-	}
-	if ( isset($_POST['city']) ) {
-		update_post_meta( $post_id, 'city', sanitize_text_field( $_POST['city'] ) );
 	}
 }
 add_action( 'save_post', 'save_meta_box' );
