@@ -11,3 +11,4 @@ require_once TEMPLATEPATH . '/api/events/events.php';
 require_once TEMPLATEPATH . '/api/events/event.php';
 
 require_once TEMPLATEPATH . '/api/categories/categories.php';
+require_once TEMPLATEPATH . '/api/cities/cities.php';

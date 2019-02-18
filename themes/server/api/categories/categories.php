@@ -2,11 +2,10 @@
 
 function api_get_categories() {
     $result = array();
-    $categories = get_categories();
+    $categories = get_terms( 'category', 'hide_empty=0' );
 
     foreach( $categories as $category ) {
         $item = array(
-            'id' => $category->cat_ID,
             'slug' => $category->slug,
             'title' => $category->name,
             'about' => $category->description,

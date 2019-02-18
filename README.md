@@ -108,18 +108,38 @@ List all categories
 ```json
 [
   {
-    "id": 4,
     "slug": "curso-e-workshop",
     "title": "Curso e Workshop",
     "about": "Sample text",
     "count": 1
   },
   {
-    "id": 10,
     "slug": "festa-e-show",
     "title": "Festa e Show",
     "about": "Sample text",
     "count": 2
+  }
+]
+```
+
+## City Endpoints
+
+#### GET `http://localhost:8081/wp-json/purai/v1/cities`
+List all cities
+
+```json
+[
+  {
+    "slug": "cupertino",
+    "title": "Cupertino",
+    "about": "",
+    "count": 1
+  },
+  {
+    "slug": "los-angeles",
+    "title": "Los Angeles",
+    "about": "",
+    "count": 0
   }
 ]
 ```
