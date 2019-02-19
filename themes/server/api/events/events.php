@@ -3,12 +3,23 @@
 function api_get_events( $data ) {
 
     $category_param = $data->get_param( 'category' );
+    $city_param = $data->get_param( 'city' );
     $today_param = $data->get_param( 'today' );
     $featured_param = $data->get_param( 'featured' );
     $trending_param = $data->get_param( 'trending' );
     $slug_param = $data->get_param( 'slug' );
     $per_page_param = $data->get_param( 'per-page' );
-    
+
+    if(!empty($city_param) || isset($city_param) ) {
+		$taxArrayCategory = array(
+            array(
+                'taxonomy' => 'city',
+                'field'    => 'slug',
+                'terms'    => $city_param,
+            ),
+        );
+    };
+
     if(!empty($category_param) || isset($category_param) ) {
 		$taxArrayCategory = array(
             array(
@@ -52,6 +63,7 @@ function api_get_events( $data ) {
         'orderby'           => 'date',
         'post_status'       => array('publish', 'future'),
         'limit'             => -1,
+        'tax_query'         => $city_param,
         'tax_query'         => $taxArrayCategory,
         'date_query'        => $dateQuery,
         'name'              => $slug_param,
@@ -81,6 +93,11 @@ function api_get_events( $data ) {
         $category = get_the_terms( $post->ID, 'category' )[0];
         $where_to_buy = get_the_terms( $post->ID, 'where_to_buy' )[0];
         
+        $taxonomy_city = array(
+            'slug'  => $city->slug,
+            'title' => $city->name,
+        );
+
         $taxonomy_category = array(
             'slug'  => $category->slug,
             'title' => $category->name,
@@ -106,7 +123,7 @@ function api_get_events( $data ) {
             'date'          => $date,
             'contact'       => $contact,
             'address'       => $address,
-            'city'          => $city->name,
+            'city'          => $taxonomy_city,
             'category'      => $taxonomy_category,
             'where_to_buy'  => $taxonomy_where_to_buy,
         );

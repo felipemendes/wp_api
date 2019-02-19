@@ -56,7 +56,10 @@ List all events from WordPress dashboard
     "date": "19/04/2019 às 20:00",
     "contact": "Mais informações pelo telefone (55) 2222-3332",
     "address": "Apple Campus, Cupertino, CA 95014, EUA",
-    "city": "Cupertino",
+    "city": {
+      "slug": "cupertino",
+      "title": "Cupertino"
+    },
     "category": {
       "slug": "festas",
       "title": "Festas"
@@ -88,7 +91,10 @@ List event by event slug
   "date": "2022-01-01T00:00:00",
   "contact": "Mais informações pelo telefone (55) 2222-3332",
   "address": "Apple Campus, Cupertino, CA 95014, EUA",
-  "city": "Cupertino",
+  "city": {
+    "slug": "los-angeles",
+    "title": "Los Angeles"
+  },
   "category": {
     "slug": "festa-e-show",
     "title": "Festa e Show"
