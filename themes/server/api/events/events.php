@@ -80,6 +80,7 @@ function api_get_events( $data ) {
         $slug = get_post_field( 'post_name', $id );
         $status = get_post_status();
         $featured = get_post_meta( get_the_ID(), 'featured', TRUE );
+        $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'medium');
         $trending = get_post_meta( get_the_ID(), 'trending', TRUE );
         $created_at = get_the_date( 'Y-m-d H:i:s' );
         $title = get_the_title();
@@ -117,6 +118,7 @@ function api_get_events( $data ) {
             'trending'      => $trending,
             'title'         => $title,
             'image'         => $image,
+            'thumbnail'     => $thumbnail,
             'about'         => $about,
             'price'         => $price,
             'date_raw'      => $created_at,

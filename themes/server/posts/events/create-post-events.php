@@ -29,10 +29,19 @@ function create_post_events() {
 		'graphql_single_name' => 'event',
 		'graphql_plural_name' => 'events',
 	);
-	register_post_type( 'events', $args );	
+    register_post_type( 'events', $args );	
+    
+    if (class_exists('MultiPostThumbnails')) {
+		new MultiPostThumbnails(array(
+            'label'     => 'Thumbnail Image',
+            'id'        => 'thumbnail-image',
+            'post_type' => 'events'
+		));
+	}
 }
 add_action( 'init', 'create_post_events' );
 
+require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-cities.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-categories.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-where-to-buy.php';

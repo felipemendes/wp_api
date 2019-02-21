@@ -42,33 +42,34 @@ List all events from WordPress dashboard
 #### Event data response example
 ```json
 [
-  {
-    "id": 5,
-    "guid": "http://localhost:8081/?post_type=events&#038;p=5",
-    "slug": "sample-event",
-    "status": "future",
-    "featured": "0",
-    "title": "Sample Event",
-    "image": "http://localhost:8081/wp-content/uploads/2019/01/download.jpeg",
-    "about": "Sample event description",
-    "price": "R$ 100,00",
-    "date_raw": "2019-01-19 20:00:28",
-    "date": "19/04/2019 às 20:00",
-    "contact": "Mais informações pelo telefone (55) 2222-3332",
-    "address": "Apple Campus, Cupertino, CA 95014, EUA",
-    "city": {
-      "slug": "cupertino",
-      "title": "Cupertino"
-    },
-    "category": {
-      "slug": "festas",
-      "title": "Festas"
-    },
-    "where_to_buy": {
-      "slug": "entre-em-contato-para-mais-detalhes",
-      "title": "Entre em contato para mais detalhes"
+    {
+        "id": 5,
+        "guid": "http://localhost:8081/?post_type=events&#038;p=5",
+        "slug": "sample-event",
+        "status": "future",
+        "featured": "0",
+        "title": "Sample Event",
+        "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
+        "thumbnail": "http://localhost:8081/wp-content/uploads/2019/01/thumbnail.jpeg",
+        "about": "Sample event description",
+        "price": "R$ 100,00",
+        "date_raw": "2019-01-19 20:00:28",
+        "date": "19/04/2019 às 20:00",
+        "contact": "Mais informações pelo telefone (55) 2222-3332",
+        "address": "Apple Campus, Cupertino, CA 95014, EUA",
+        "city": {
+        "slug": "cupertino",
+        "title": "Cupertino"
+        },
+        "category": {
+        "slug": "festas",
+        "title": "Festas"
+        },
+        "where_to_buy": {
+        "slug": "entre-em-contato-para-mais-detalhes",
+        "title": "Entre em contato para mais detalhes"
+        }
     }
-  }
 ]
 ```
 
@@ -77,32 +78,33 @@ List event by event slug
 
 ```json
 {
-  "id": 5,
-  "guid": "http://localhost:8081/?post_type=events&#038;p=5",
-  "slug": "sample-event",
-  "status": "publish",
-  "featured": "0",
-  "created_at": "2019-01-14 20:31:28",
-  "updated_at": "2019-01-15 23:30:00",
-  "title": "Sample Event",
-  "image": "http://localhost:8081/wp-content/uploads/2019/01/download.jpeg",
-  "about": "Sample event description",
-  "price": "R$ 100,00",
-  "date": "2022-01-01T00:00:00",
-  "contact": "Mais informações pelo telefone (55) 2222-3332",
-  "address": "Apple Campus, Cupertino, CA 95014, EUA",
-  "city": {
-    "slug": "los-angeles",
-    "title": "Los Angeles"
-  },
-  "category": {
-    "slug": "festa-e-show",
-    "title": "Festa e Show"
-  },
-  "where_to_buy": {
-    "slug": "entre-em-contato-para-mais-detalhes",
-    "title": "Entre em contato para mais detalhes"
-  }
+    "id": 5,
+    "guid": "http://localhost:8081/?post_type=events&#038;p=5",
+    "slug": "sample-event",
+    "status": "publish",
+    "featured": "0",
+    "created_at": "2019-01-14 20:31:28",
+    "updated_at": "2019-01-15 23:30:00",
+    "title": "Sample Event",
+    "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
+    "thumbnail": "http://localhost:8081/wp-content/uploads/2019/01/thumbnail.jpeg",
+    "about": "Sample event description",
+    "price": "R$ 100,00",
+    "date": "2022-01-01T00:00:00",
+    "contact": "Mais informações pelo telefone (55) 2222-3332",
+    "address": "Apple Campus, Cupertino, CA 95014, EUA",
+    "city": {
+        "slug": "los-angeles",
+        "title": "Los Angeles"
+    },
+    "category": {
+        "slug": "festa-e-show",
+        "title": "Festa e Show"
+    },
+    "where_to_buy": {
+        "slug": "entre-em-contato-para-mais-detalhes",
+        "title": "Entre em contato para mais detalhes"
+    }
 }
 ```
 
@@ -113,18 +115,18 @@ List all categories
 
 ```json
 [
-  {
-    "slug": "curso-e-workshop",
-    "title": "Curso e Workshop",
-    "about": "Sample text",
-    "count": 1
-  },
-  {
-    "slug": "festa-e-show",
-    "title": "Festa e Show",
-    "about": "Sample text",
-    "count": 2
-  }
+    {
+        "slug": "curso-e-workshop",
+        "title": "Curso e Workshop",
+        "about": "Sample text",
+        "count": 1
+    },
+    {
+        "slug": "festa-e-show",
+        "title": "Festa e Show",
+        "about": "Sample text",
+        "count": 2
+    }
 ]
 ```
 
@@ -135,18 +137,18 @@ List all cities
 
 ```json
 [
-  {
-    "slug": "cupertino",
-    "title": "Cupertino",
-    "about": "",
-    "count": 1
-  },
-  {
-    "slug": "los-angeles",
-    "title": "Los Angeles",
-    "about": "",
-    "count": 0
-  }
+    {
+        "slug": "cupertino",
+        "title": "Cupertino",
+        "about": "",
+        "count": 1
+    },
+    {
+        "slug": "los-angeles",
+        "title": "Los Angeles",
+        "about": "",
+        "count": 0
+    }
 ]
 ```
 
