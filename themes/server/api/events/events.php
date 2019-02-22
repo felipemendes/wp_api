@@ -1,7 +1,7 @@
 <?php
 
 function api_get_events( $data ) {
-
+    
     $category_param = $data->get_param( 'category' );
     $city_param = $data->get_param( 'city' );
     $today_param = $data->get_param( 'today' );
@@ -30,13 +30,12 @@ function api_get_events( $data ) {
         );
     };
 
-    if(!empty($today_param) || isset($today_param) ) {
-        $today = getdate();
+    if(!empty($today_param) || isset($today_param) ) { 
 		$dateQuery = array(
             array(
-              'year'  => $today['year'],
-              'month' => $today['mon'],
-              'day'   => $today['mday'],
+                'year'  => date("Y"),
+                'month' => date("m"),
+                'day'   => date("d"),
             ),
         );
     };
@@ -80,11 +79,11 @@ function api_get_events( $data ) {
         $slug = get_post_field( 'post_name', $id );
         $status = get_post_status();
         $featured = get_post_meta( get_the_ID(), 'featured', TRUE );
-        $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'medium');
         $trending = get_post_meta( get_the_ID(), 'trending', TRUE );
         $created_at = get_the_date( 'Y-m-d H:i:s' );
         $title = get_the_title();
         $image = get_the_post_thumbnail_url( $post_id, 'full' );
+        $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'full');
         $about = get_post_meta( get_the_ID(), 'about', TRUE );
         $price = get_post_meta( get_the_ID(), 'price', TRUE );
         $date = get_post_meta( get_the_ID(), 'date', TRUE );

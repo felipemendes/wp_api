@@ -2,7 +2,12 @@
 
 function api_get_categories() {
     $result = array();
-    $categories = get_terms( 'category', 'hide_empty=0' );
+    $categories = get_terms(
+        array(
+            'taxonomy' => 'category',
+            'hide_empty' => false,
+        )
+    );
 
     foreach( $categories as $category ) {
         $item = array(
