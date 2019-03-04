@@ -75,6 +75,9 @@ function meta_info_view( $post ) {
 			<label>Contact</label>
 			<input class="meta-box-input" type="text" name="contact" value="<?= $meta_data['contact'][0]; ?>">
 
+            <label>Where</label>
+			<input class="meta-box-input" type="text" name="where" value="<?= $meta_data['where'][0]; ?>">
+
 			<label>Address</label>
 			<input class="meta-box-input" type="text" name="address" value="<?= $meta_data['address'][0]; ?>">
 		</div>
@@ -97,6 +100,9 @@ function save_meta_box( $post_id ) {
 	}
 	if ( isset($_POST['contact']) ) {
 		update_post_meta( $post_id, 'contact', sanitize_text_field( $_POST['contact'] ) );
+    }
+    if ( isset($_POST['where']) ) {
+		update_post_meta( $post_id, 'where', sanitize_text_field( $_POST['where'] ) );
 	}
 	if ( isset($_POST['address']) ) {
 		update_post_meta( $post_id, 'address', sanitize_text_field( $_POST['address'] ) );

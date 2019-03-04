@@ -17,6 +17,7 @@ function api_get_event( $request ) {
     $date = get_post_meta( $page_object->ID, 'date', TRUE );
     $contact = get_post_meta( $id, 'contact', TRUE );
     $address = get_post_meta( $page_object->ID, 'address', TRUE );
+    $where = get_post_meta( get_the_ID(), 'where', TRUE );
     $city = get_post_meta( $page_object->ID, 'city', TRUE );
     $category = get_the_terms( $id, 'category' )[0];
     $where_to_buy = get_the_terms( $id, 'where_to_buy' )[0];
@@ -46,6 +47,7 @@ function api_get_event( $request ) {
         'contact' => $contact,
         'address' => $address,
         'city' => $city,
+        'where' => $where,
         'category' => $taxonomy_category,
         'where_to_buy' => $taxonomy_where_to_buy,
     );

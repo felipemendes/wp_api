@@ -60,7 +60,7 @@ function api_get_events( $data ) {
     $args = array(
         'post_type'         => 'events',
         'orderby'           => 'date',
-        'order'             => 'ASC',
+        'order'             => 'DESC',
         'post_status'       => array('publish', 'future'),
         'limit'             => -1,
         'tax_query'         => $city_param,
@@ -90,6 +90,7 @@ function api_get_events( $data ) {
         $date = get_post_meta( get_the_ID(), 'date', TRUE );
         $contact = get_post_meta( get_the_ID(), 'contact', TRUE );
         $address = get_post_meta( get_the_ID(), 'address', TRUE );
+        $where = get_post_meta( get_the_ID(), 'where', TRUE );
         $city = get_the_terms( $post->ID, 'city' )[0];
         $category = get_the_terms( $post->ID, 'category' )[0];
         $where_to_buy = get_the_terms( $post->ID, 'where_to_buy' )[0];
@@ -126,6 +127,7 @@ function api_get_events( $data ) {
             'date'          => $date,
             'contact'       => $contact,
             'address'       => $address,
+            'where'         => $where,
             'city'          => $taxonomy_city,
             'category'      => $taxonomy_category,
             'where_to_buy'  => $taxonomy_where_to_buy,
