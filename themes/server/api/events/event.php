@@ -12,8 +12,8 @@ function api_get_event( $request ) {
     $updated_at = $page_object->post_modified;
     $title = $page_object->post_title;
     $image = get_the_post_thumbnail_url( $page_object->ID, 'full' );
-    $about = get_post_meta( $id, 'about', TRUE );
-    $price = get_post_meta( $id, 'price', TRUE );;
+    $about = get_the_content();
+    $price = get_post_meta( $id, 'price', TRUE );
     $date = get_post_meta( $page_object->ID, 'date', TRUE );
     $contact = get_post_meta( $id, 'contact', TRUE );
     $address = get_post_meta( $page_object->ID, 'address', TRUE );

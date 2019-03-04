@@ -60,6 +60,7 @@ function api_get_events( $data ) {
     $args = array(
         'post_type'         => 'events',
         'orderby'           => 'date',
+        'order'             => 'ASC',
         'post_status'       => array('publish', 'future'),
         'limit'             => -1,
         'tax_query'         => $city_param,
@@ -84,7 +85,7 @@ function api_get_events( $data ) {
         $title = get_the_title();
         $image = get_the_post_thumbnail_url( $post_id, 'full' );
         $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'full');
-        $about = get_post_meta( get_the_ID(), 'about', TRUE );
+        $about = get_the_content();
         $price = get_post_meta( get_the_ID(), 'price', TRUE );
         $date = get_post_meta( get_the_ID(), 'date', TRUE );
         $contact = get_post_meta( get_the_ID(), 'contact', TRUE );
@@ -106,6 +107,7 @@ function api_get_events( $data ) {
         $taxonomy_where_to_buy = array(
             'slug'  => $where_to_buy->slug,
             'title' => $where_to_buy->name,
+            'url'   => $where_to_buy->description
         );
 
         $post = array(

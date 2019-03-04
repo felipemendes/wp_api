@@ -15,7 +15,8 @@ function create_post_events() {
     );
     
 	$supports = array(
-		'title',
+        'title',
+        'editor',
 		'thumbnail'
     );
     
@@ -45,5 +46,4 @@ require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.ph
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-cities.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-categories.php';
 require_once TEMPLATEPATH . '/posts/events/create-taxonomy-where-to-buy.php';
-require_once TEMPLATEPATH . '/posts/events/create-meta-box-about.php';
 require_once TEMPLATEPATH . '/posts/events/create-meta-box-info.php';
