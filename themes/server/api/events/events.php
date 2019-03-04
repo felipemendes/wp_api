@@ -2,6 +2,7 @@
 
 function api_get_events( $data ) {
     
+    $status_param = $data->get_param( 'status' );
     $category_param = $data->get_param( 'category' );
     $city_param = $data->get_param( 'city' );
     $today_param = $data->get_param( 'today' );
@@ -10,7 +11,15 @@ function api_get_events( $data ) {
     $slug_param = $data->get_param( 'slug' );
     $per_page_param = $data->get_param( 'per-page' );
 
-    if(!empty($city_param) || isset($city_param) ) {
+    if ( !empty($status_param) || isset($status_param) ) {
+        $dateOrder = 'DESC';
+        $statusArray = array($status_param);
+    } else {
+        $dateOrder = 'ASC';
+        $statusArray = array('future');
+    }
+
+    if ( !empty($city_param) || isset($city_param) ) {
 		$taxArrayCategory = array(
             array(
                 'taxonomy' => 'city',
@@ -20,7 +29,7 @@ function api_get_events( $data ) {
         );
     };
 
-    if(!empty($category_param) || isset($category_param) ) {
+    if ( !empty($category_param) || isset($category_param) ) {
 		$taxArrayCategory = array(
             array(
                 'taxonomy' => 'category',
@@ -30,7 +39,7 @@ function api_get_events( $data ) {
         );
     };
 
-    if(!empty($today_param) || isset($today_param) ) { 
+    if ( !empty($today_param) || isset($today_param) ) { 
 		$dateQuery = array(
             array(
                 'year'  => date("Y"),
@@ -40,7 +49,7 @@ function api_get_events( $data ) {
         );
     };
 
-    if( (!empty($featured_param) || isset($featured_param)) || (!empty($trending_param) || isset($trending_param)) ) {
+    if ( (!empty($featured_param) || isset($featured_param)) || (!empty($trending_param) || isset($trending_param)) ) {
         $meta_query = array(
             'meta_query' => array(
                 'relation' => 'OR',
@@ -60,8 +69,8 @@ function api_get_events( $data ) {
     $args = array(
         'post_type'         => 'events',
         'orderby'           => 'date',
-        'order'             => 'DESC',
-        'post_status'       => array('publish', 'future'),
+        'order'             => $dateOrder,
+        'post_status'       => $statusArray,
         'limit'             => -1,
         'tax_query'         => $city_param,
         'tax_query'         => $taxArrayCategory,
@@ -82,7 +91,7 @@ function api_get_events( $data ) {
         $featured = get_post_meta( get_the_ID(), 'featured', TRUE );
         $trending = get_post_meta( get_the_ID(), 'trending', TRUE );
         $created_at = get_the_date( 'Y-m-d H:i:s' );
-        $title = get_the_title();
+        $title = html_entity_decode(get_the_title());
         $image = get_the_post_thumbnail_url( $post_id, 'full' );
         $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'full');
         $about = get_the_content();

@@ -31,6 +31,7 @@ List all events from WordPress dashboard
 
 | Parameter | Type | Required | Description
 | --------- | ---- | -------- | ----------- |
+| `status` | string | :x: | GET filtered by any WP status type. (Default is `future`) |
 | `slug` | string | :x: | GET filtered by slug |
 | `per-page` | int | :x: | GET filtered by limit informed. If not informed returns all records |
 | `category` | string | :x: | GET filtered by category slug |
@@ -43,7 +44,7 @@ List all events from WordPress dashboard
 ```json
 [
     {
-        "id": 5,
+        "id": 1,
         "guid": "http://localhost:8081/?post_type=events&#038;p=5",
         "slug": "sample-event",
         "status": "future",
@@ -52,22 +53,24 @@ List all events from WordPress dashboard
         "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
         "thumbnail": "http://localhost:8081/wp-content/uploads/2019/01/thumbnail.jpeg",
         "about": "Sample event description",
-        "price": "R$ 100,00",
-        "date_raw": "2019-01-19 20:00:28",
-        "date": "19/04/2019 às 20:00",
-        "contact": "Mais informações pelo telefone (55) 2222-3332",
-        "address": "Apple Campus, Cupertino, CA 95014, EUA",
+        "price": "U$100,00",
+        "date_raw": "2019-01-01 08:00:00",
+        "date": "01/01/2019 at 08:00pm",
+        "contact": "Get in touch on (877) 412–7753",
+        "address": "Cupertino, CA 95014",
+        "where": "Apple Campus",
         "city": {
-        "slug": "cupertino",
-        "title": "Cupertino"
+            "slug": "cupertino",
+            "title": "Cupertino"
         },
         "category": {
-        "slug": "festas",
-        "title": "Festas"
+            "slug": "concerts",
+            "title": "Concerts"
         },
         "where_to_buy": {
-        "slug": "entre-em-contato-para-mais-detalhes",
-        "title": "Entre em contato para mais detalhes"
+            "slug": "buy-your-ticket",
+            "title": "Buy Your Ticket",
+            "url": "http://www.buyyourticket.com"
         }
     }
 ]
@@ -78,32 +81,33 @@ List event by event slug
 
 ```json
 {
-    "id": 5,
+    "id": 1,
     "guid": "http://localhost:8081/?post_type=events&#038;p=5",
     "slug": "sample-event",
-    "status": "publish",
+    "status": "future",
     "featured": "0",
-    "created_at": "2019-01-14 20:31:28",
-    "updated_at": "2019-01-15 23:30:00",
     "title": "Sample Event",
     "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
     "thumbnail": "http://localhost:8081/wp-content/uploads/2019/01/thumbnail.jpeg",
     "about": "Sample event description",
-    "price": "R$ 100,00",
-    "date": "2022-01-01T00:00:00",
-    "contact": "Mais informações pelo telefone (55) 2222-3332",
-    "address": "Apple Campus, Cupertino, CA 95014, EUA",
+    "price": "U$100,00",
+    "date_raw": "2019-01-01 08:00:00",
+    "date": "01/01/2019 at 08:00pm",
+    "contact": "Get in touch on (877) 412–7753",
+    "address": "Cupertino, CA 95014",
+    "where": "Apple Campus",
     "city": {
-        "slug": "los-angeles",
-        "title": "Los Angeles"
+        "slug": "cupertino",
+        "title": "Cupertino"
     },
     "category": {
-        "slug": "festa-e-show",
-        "title": "Festa e Show"
+        "slug": "concerts",
+        "title": "Concerts"
     },
     "where_to_buy": {
-        "slug": "entre-em-contato-para-mais-detalhes",
-        "title": "Entre em contato para mais detalhes"
+        "slug": "buy-your-ticket",
+        "title": "Buy Your Ticket",
+        "url": "http://www.buyyourticket.com"
     }
 }
 ```
@@ -116,15 +120,15 @@ List all categories
 ```json
 [
     {
-        "slug": "curso-e-workshop",
-        "title": "Curso e Workshop",
-        "about": "Sample text",
-        "count": 1
+        "slug": "concerts",
+        "title": "Concerts",
+        "about": "Sample text description",
+        "count": 3
     },
     {
-        "slug": "festa-e-show",
-        "title": "Festa e Show",
-        "about": "Sample text",
+        "slug": "meetup",
+        "title": "Meetup",
+        "about": "Sample text description",
         "count": 2
     }
 ]
@@ -140,13 +144,13 @@ List all cities
     {
         "slug": "cupertino",
         "title": "Cupertino",
-        "about": "",
+        "about": "Sample text description",
         "count": 1
     },
     {
         "slug": "los-angeles",
         "title": "Los Angeles",
-        "about": "",
+        "about": "Sample text description",
         "count": 0
     }
 ]
