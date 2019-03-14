@@ -26,7 +26,7 @@ Use [wp-graphql](https://github.com/wp-graphql/wp-graphql) plugin that provide a
 
 ## Event Endpoints
 
-#### GET `http://localhost:8081/wp-json/purai/v1/events`
+#### GET `http://localhost:8081/api/v1/events`
 List all events from WordPress dashboard
 
 | Parameter | Type | Required | Description
@@ -76,7 +76,7 @@ List all events from WordPress dashboard
 ]
 ```
 
-#### GET `http://localhost:8081/wp-json/purai/v1/event/{slug}`
+#### GET `http://localhost:8081/api/v1/event/{slug}`
 List event by event slug
 
 ```json
@@ -114,7 +114,7 @@ List event by event slug
 
 ## Category Endpoints
 
-#### GET `http://localhost:8081/wp-json/purai/v1/categories`
+#### GET `http://localhost:8081/api/v1/categories`
 List all categories
 
 ```json
@@ -136,7 +136,7 @@ List all categories
 
 ## City Endpoints
 
-#### GET `http://localhost:8081/wp-json/purai/v1/cities`
+#### GET `http://localhost:8081/api/v1/cities`
 List all cities
 
 ```json

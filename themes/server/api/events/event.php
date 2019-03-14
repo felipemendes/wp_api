@@ -6,12 +6,14 @@ function api_get_event( $request ) {
 
     $id = $page_object->ID;
     $guid = $page_object->guid;
+    $slug = get_post_field( 'post_name', $id );
     $status = $page_object->post_status;
-    $featured = get_post_meta( $id, 'featured', true );
+    $featured = get_post_meta( $id, 'featured', TRUE );
+    $trending = get_post_meta( $id, 'trending', TRUE );
     $created_at = $page_object->post_date;
-    $updated_at = $page_object->post_modified;
     $title = $page_object->post_title;
     $image = get_the_post_thumbnail_url( $page_object->ID, 'full' );
+    $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'full');
     $about = get_the_content();
     $price = get_post_meta( $id, 'price', TRUE );
     $date = get_post_meta( $page_object->ID, 'date', TRUE );
@@ -21,42 +23,50 @@ function api_get_event( $request ) {
     $city = get_post_meta( $page_object->ID, 'city', TRUE );
     $category = get_the_terms( $id, 'category' )[0];
     $where_to_buy = get_the_terms( $id, 'where_to_buy' )[0];
-        
+    
+    $taxonomy_city = array(
+        'slug'  => $city->slug,
+        'title' => $city->name,
+    );
+
     $taxonomy_category = array(
-        'slug' => $category->slug,
+        'slug'  => $category->slug,
         'title' => $category->name,
     );
 
     $taxonomy_where_to_buy = array(
-        'slug' => $where_to_buy->slug,
+        'slug'  => $where_to_buy->slug,
         'title' => $where_to_buy->name,
+        'url'   => $where_to_buy->description
     );
     
     $post = array (
-        'id' => $id,
-        'guid' => $guid,
-        'slug' => $slug,
-        'status' => $status,
-        'featured' => $featured,
-        'title' => $title,
-        'image' => $image,
-        'about' => $about,
-        'price' => $price,
-        'date_raw' => $created_at,
-        'date' => $date,
-        'contact' => $contact,
-        'address' => $address,
-        'city' => $city,
-        'where' => $where,
-        'category' => $taxonomy_category,
-        'where_to_buy' => $taxonomy_where_to_buy,
+        'id'            => $id,
+        'guid'          => $guid,
+        'slug'          => $slug,
+        'status'        => $status,
+        'featured'      => $featured,
+        'trending'      => $trending,
+        'title'         => $title,
+        'image'         => $image,
+        'thumbnail'     => $thumbnail,
+        'about'         => $about,
+        'price'         => $price,
+        'date_raw'      => $created_at,
+        'date'          => $date,
+        'contact'       => $contact,
+        'address'       => $address,
+        'where'         => $where,
+        'city'          => $taxonomy_city,
+        'category'      => $taxonomy_category,
+        'where_to_buy'  => $taxonomy_where_to_buy,
     );
 
     return rest_ensure_response( $post );
 }
 
 function api_register_event_routes() {
-    register_rest_route('purai/v1', '/event/(?P<slug>[-\w]+)', array(
+    register_rest_route('v1', '/event/(?P<slug>[-\w]+)', array(
         'methods' => 'GET',
         'callback' => 'api_get_event',
     ));

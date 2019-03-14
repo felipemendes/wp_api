@@ -23,7 +23,7 @@ function api_get_categories() {
 }
 
 function api_register_categories_routes() {
-    register_rest_route( 'purai/v1', '/categories', array(
+    register_rest_route( 'v1', '/categories', array(
         'methods' => 'GET',
         'callback' => 'api_get_categories',
     ) );

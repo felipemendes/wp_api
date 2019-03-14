@@ -18,7 +18,7 @@ function api_get_cities() {
 }
 
 function api_register_cities_routes() {
-    register_rest_route( 'purai/v1', '/cities', array(
+    register_rest_route( 'v1', '/cities', array(
         'methods' => 'GET',
         'callback' => 'api_get_cities',
     ) );
