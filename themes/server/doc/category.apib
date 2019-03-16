@@ -1,0 +1,45 @@
+# Group Categories
+This section groups PurAí category resources.
+
+## Category List [/v1/categories]
+A Category is the other central object utilized by the PurAí API. It has
+rich text and annotations which comprise all of the content a users sees in
+their feed. Categories are closely tied to the follow graph.
+
+### Get Categories [GET]
+Get a list of categories.
+
+    + Headers
+
+        Accept: application/json
+        Content-Type: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "slug": "concerts",
+                    "title": "Concerts",
+                    "about": "Sample text description",
+                    "count": 3
+                },
+                {
+                    "slug": "meetup",
+                    "title": "Meetup",
+                    "about": "Sample text description",
+                    "count": 2
+                }
+            ]
+
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "message": "Not found",
+                "data": {
+                    "status": 404
+                }
+            }

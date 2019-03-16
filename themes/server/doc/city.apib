@@ -1,0 +1,45 @@
+# Group Cities
+This section groups PurAí city resources.
+
+## City List [/v1/cities]
+A City is the other central object utilized by the PurAí API. It has
+rich text and annotations which comprise all of the content a users sees in
+their feed. Cities are closely tied to the follow graph.
+
+### Get Cities [GET]
+Get a list of cities.
+
+    + Headers
+
+        Accept: application/json
+        Content-Type: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "slug": "cupertino",
+                    "title": "Cupertino",
+                    "about": "Sample text description",
+                    "count": 1
+                },
+                {
+                    "slug": "los-angeles",
+                    "title": "Los Angeles",
+                    "about": "Sample text description",
+                    "count": 0
+                }
+            ]
+
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "message": "Not found",
+                "data": {
+                    "status": 404
+                }
+            }

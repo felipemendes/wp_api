@@ -1,0 +1,156 @@
+FORMAT: 1A
+HOST: http://localhost:8081/api
+
+# PurAí API
+This API Blueprint demonstrates a PurAí example documenting a portion of
+[PurAí API](http://localhost:8081/api).
+
+### Getting a Token
+
+Send a `POST` request to `http://localhost:8081/api/jwt-auth/v1/token`. 
+
+#### Curl request example
+```
+curl -XGET http://localhost:8081/api/jwt-auth/v1/token
+```
+
+# Group Events
+This section groups PurAí event resources.
+
+## Event List [/v1/events/{?status}/{?slug}/{?status}/{?per_page}/{?category}/{?today}/{?city}/{?featured}/{?trending}]
+A Event is the other central object utilized by the PurAí API. It has
+rich text and annotations which comprise all of the content a users sees in
+their feed. Events are closely tied to the follow graph.
+
++ Parameters
+    + status: `future` (string, optional) - GET filtered by any WP status type. (Default is future).
+    + slug: `sample-event` (string, optional) - GET filtered by event slug.
+    + per_page: 10 (integer, optional) - GET filtered by limit informed. If not informed returns all records.
+    + category: `meetup` (string, optional) - GET filtered by category slug.
+    + today: 1 (integer, optional) - GET filtered events by current date.
+    + city: `cupertino` (string, optional) - GET filtered by city slug.
+    + featured: 1 (integer, optional) - GET filtered by featured events. (1: Yes, 0: No).
+    + trending: 1 (integer, optional) - GET filtered by trending events. (1: Yes, 0: No).
+    
+### Get Events [GET]
+Get a list of events.
+
+    + Headers
+
+        Accept: application/json
+        Content-Type: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "id": 1,
+                    "guid": "https://developer.purai.io/?post_type=events&#038;p=1",
+                    "slug": "sample-event",
+                    "status": "future",
+                    "featured": "1",
+                    "trending": "0",
+                    "title": "Sample Event",
+                    "image": "https://developer.purai.io/wp-content/uploads/2019/01/image.jpg",
+                    "thumbnail": "https://developer.purai.io/wp-content/uploads/2019/01/thumbnail.jpg",
+                    "about": "Sample event about description",
+                    "price": "100,00",
+                    "date_raw": "2019-01-01 01:00:00",
+                    "date": "01/01/2019 - 02/01/2019 - 01:00 - 04:00",
+                    "contact": "Contact info text",
+                    "address": "Dummy sample event address",
+                    "where": "Sample place name",
+                    "city": {
+                        "slug": "cupertino",
+                        "title": "Cupertino"
+                    },
+                    "category": {
+                        "slug": "meetup",
+                        "title": "Meetup"
+                    },
+                    "where_to_buy": {
+                        "slug": "sample-place",
+                        "title": "Sample Place",
+                        "url": "https://sampleplace.com"
+                    }
+                }
+            ]
+
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "message": "Not found",
+                "data": {
+                    "status": 404
+                }
+            }
+
+## Event [/v1/event/{event_slug}]
+A Event is the other central object utilized by the PurAí API. It has
+rich text and annotations which comprise all of the content a users sees in
+their feed. Posts are closely tied to the follow graph.
+
++ Parameters
+    + event_slug: `sample-event` (string) - The slug of the Event.
+
++ Model (application/json)
+
+    ```js
+    {
+        "id": 1,
+        "guid": "https://developer.purai.io/?post_type=events&#038;p=1",
+        "slug": "sample-event",
+        "status": "future",
+        "featured": "1",
+        "trending": "0",
+        "title": "Sample Event",
+        "image": "https://developer.purai.io/wp-content/uploads/2019/01/image.jpg",
+        "thumbnail": "https://developer.purai.io/wp-content/uploads/2019/01/thumbnail.jpg",
+        "about": "Sample event about description",
+        "price": "100,00",
+        "date_raw": "2019-01-01 01:00:00",
+        "date": "01/01/2019 - 02/01/2019 - 01:00 - 04:00",
+        "contact": "Contact info text",
+        "address": "Dummy sample event address",
+        "where": "Sample place name",
+        "city": {
+            "slug": "cupertino",
+            "title": "Cupertino"
+        },
+        "category": {
+            "slug": "meetup",
+            "title": "Meetup"
+        },
+        "where_to_buy": {
+            "slug": "sample-place",
+            "title": "Sample Place",
+            "url": "https://sampleplace.com"
+        }
+    }
+    ```
+
+### Get Event [GET]
+Get a single Events.
+
++ Response 200
+
+    [Event][]
+
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "message": "Not found",
+                "data": {
+                    "status": 404
+                }
+            }
+
+<!-- include(category.apib) -->
+
+<!-- include(city.apib) -->
