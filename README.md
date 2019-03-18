@@ -160,7 +160,7 @@ List all cities
 
 Clone this repo:
 ```
-$ git clone https://github.com/felipemendes/purai_wp_api.git
+$ git clone https://github.com/purai/wp_api.git
 ```
 
 Add theme folder `theme/server` into any WordPress directory, like `.../wp-content/themes/`.
@@ -169,7 +169,7 @@ Add theme folder `theme/server` into any WordPress directory, like `.../wp-conte
 
 Clone this repo:
 ```
-$ git clone https://github.com/felipemendes/purai_wp_api.git
+$ git clone https://github.com/purai/wp_api.git
 ```
 
 Start out development environment from [docker-composer.yml](./docker-compose.yml) file:
