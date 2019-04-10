@@ -45,16 +45,13 @@ List all events from WordPress dashboard
 [
     {
         "id": 1,
-        "guid": "http://localhost:8081/?post_type=events&#038;p=5",
-        "slug": "sample-event",
         "status": "future",
         "featured": "0",
+        "trending": "0",
         "title": "Sample Event",
         "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
-        "thumbnail": "http://localhost:8081/wp-content/uploads/2019/01/thumbnail.jpeg",
         "about": "Sample event description",
         "price": "U$100,00",
-        "date_raw": "2019-01-01 08:00:00",
         "date": "01/01/2019 at 08:00pm",
         "contact": "Get in touch on (877) 412–7753",
         "address": "Cupertino, CA 95014",
@@ -82,16 +79,13 @@ List event by event slug
 ```json
 {
     "id": 1,
-    "guid": "http://localhost:8081/?post_type=events&#038;p=5",
-    "slug": "sample-event",
     "status": "future",
     "featured": "0",
+    "trending": "0",
     "title": "Sample Event",
     "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
-    "thumbnail": "http://localhost:8081/wp-content/uploads/2019/01/thumbnail.jpeg",
     "about": "Sample event description",
     "price": "U$100,00",
-    "date_raw": "2019-01-01 08:00:00",
     "date": "01/01/2019 at 08:00pm",
     "contact": "Get in touch on (877) 412–7753",
     "address": "Cupertino, CA 95014",
@@ -144,14 +138,31 @@ List all cities
     {
         "slug": "cupertino",
         "title": "Cupertino",
-        "about": "Sample text description",
-        "count": 1
-    },
-    {
-        "slug": "los-angeles",
-        "title": "Los Angeles",
-        "about": "Sample text description",
-        "count": 0
+        "events": [
+            {
+                "id": 1,
+                "status": "future",
+                "featured": "0",
+                "trending": "0",
+                "title": "Sample Event",
+                "image": "http://localhost:8081/wp-content/uploads/2019/01/image.jpeg",
+                "about": "Sample event description",
+                "price": "U$100,00",
+                "date": "01/01/2019 at 08:00pm",
+                "contact": "Get in touch on (877) 412–7753",
+                "address": "Cupertino, CA 95014",
+                "where": "Apple Campus",
+                "category": {
+                    "slug": "concerts",
+                    "title": "Concerts"
+                },
+                "where_to_buy": {
+                    "slug": "buy-your-ticket",
+                    "title": "Buy Your Ticket",
+                    "url": "http://www.buyyourticket.com"
+                }
+            }
+        ]
     }
 ]
 ```
