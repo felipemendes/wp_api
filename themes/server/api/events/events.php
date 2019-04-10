@@ -71,7 +71,6 @@ function api_get_events( $data ) {
         'orderby'           => 'date',
         'order'             => $dateOrder,
         'post_status'       => $statusArray,
-        'limit'             => -1,
         'tax_query'         => $city_param,
         'tax_query'         => $taxArrayCategory,
         'date_query'        => $dateQuery,
@@ -85,16 +84,12 @@ function api_get_events( $data ) {
     while ( $loop->have_posts() ) : $loop->the_post();
     
         $id = get_the_ID();
-        $guid = get_the_guid();
-        $slug = get_post_field( 'post_name', $id );
         $status = get_post_status();
         $featured = get_post_meta( $id, 'featured', TRUE );
         $trending = get_post_meta( $id, 'trending', TRUE );
-        $created_at = get_the_date( 'Y-m-d H:i:s' );
         $title = html_entity_decode(get_the_title());
         $image = get_the_post_thumbnail_url( $post_id, 'full' );
-        $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'full');
-        $about = get_the_content();
+        $about = get_the_content_html();
         $price = get_post_meta( $id, 'price', TRUE );
         $date = get_post_meta( $id, 'date', TRUE );
         $contact = get_post_meta( $id, 'contact', TRUE );
@@ -115,24 +110,19 @@ function api_get_events( $data ) {
         );
 
         $taxonomy_where_to_buy = array(
-            'slug'  => $where_to_buy->slug,
             'title' => $where_to_buy->name,
             'url'   => $where_to_buy->description
         );
 
         $post = array(
             'id'            => $id,
-            'guid'          => $guid,
-            'slug'          => $slug,
             'status'        => $status,
             'featured'      => $featured,
             'trending'      => $trending,
             'title'         => $title,
             'image'         => $image,
-            'thumbnail'     => $thumbnail,
             'about'         => $about,
             'price'         => $price,
-            'date_raw'      => $created_at,
             'date'          => $date,
             'contact'       => $contact,
             'address'       => $address,

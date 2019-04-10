@@ -5,16 +5,12 @@ function api_get_event( $request ) {
     $page_object = get_page_by_path( $slug, OBJECT, 'events' );
 
     $id = $page_object->ID;
-    $guid = $page_object->guid;
-    $slug = get_post_field( 'post_name', $id );
     $status = $page_object->post_status;
     $featured = get_post_meta( $id, 'featured', TRUE );
     $trending = get_post_meta( $id, 'trending', TRUE );
-    $created_at = $page_object->post_date;
     $title = $page_object->post_title;
     $image = get_the_post_thumbnail_url( $page_object->ID, 'full' );
-    $thumbnail = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'thumbnail-image', NULL, 'full');
-    $about = get_the_content();
+    $about = get_the_content_html();
     $price = get_post_meta( $id, 'price', TRUE );
     $date = get_post_meta( $page_object->ID, 'date', TRUE );
     $contact = get_post_meta( $id, 'contact', TRUE );
@@ -42,14 +38,11 @@ function api_get_event( $request ) {
     
     $post = array (
         'id'            => $id,
-        'guid'          => $guid,
-        'slug'          => $slug,
         'status'        => $status,
         'featured'      => $featured,
         'trending'      => $trending,
         'title'         => $title,
         'image'         => $image,
-        'thumbnail'     => $thumbnail,
         'about'         => $about,
         'price'         => $price,
         'date_raw'      => $created_at,
